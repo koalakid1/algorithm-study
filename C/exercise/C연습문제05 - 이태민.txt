@@ -1,0 +1,99 @@
+1.  3명의 학생 이름, 전화번호를 scanf로 받아서
+    배열에 저장한 후 출력하시오.
+
+#include<stdio.h>
+#include<string.h>
+
+char a[100];
+char b[100];
+
+void data() {
+
+	
+	scanf_s("%s", a,sizeof(a));
+	scanf_s("%s", b, sizeof(b));
+	printf("%s의 전화번호는 %s입니다. \n", a, b);
+
+}
+
+
+int main() {
+
+	data();
+	data();
+	data();
+
+}
+
+2. 1번을 무한반복하다가 x를 입력하면 종료하도록 변경하시오.
+#include<stdio.h>
+#include<string.h>
+
+char a[100];
+char b[100];
+
+int data() {
+
+	printf("이름을 입력하세요. \n");
+	scanf_s("%s", a, sizeof(a));
+
+	printf("전화번호를 입력하세요. \n");
+	scanf_s("%s", b, sizeof(b));
+
+	printf("%s의 전화번호는 %s입니다.\n", a, b);
+
+	return 0;
+}
+
+
+int main() {
+
+	char control;
+	while (1) {
+
+		data();
+		printf("프로그램을 종료하시려면 x를 입력하세요.\n ");
+		scanf_s(" %c", &control);
+		if (control == 'x') break;
+	}
+
+}
+
+
+3. 2번을 함수로 구현하세요.
+
+#include<stdio.h>
+#include<string.h>
+
+char a[100];
+char b[100];
+
+void data() {
+
+	printf("이름을 입력하세요. \n");
+	scanf_s("%s", a, sizeof(a));
+
+	printf("전화번호를 입력하세요. \n");
+	scanf_s("%s", b, sizeof(b));
+
+	printf("%s의 전화번호는 %s입니다.\n", a, b);
+
+}
+
+void play() {
+
+	char control;
+	while (1) {
+
+		data();
+		printf("프로그램을 종료하시려면 x를 입력하세요.\n ");
+		scanf_s(" %c", &control);
+		if (control == 'x') break;
+	}
+
+}
+int main() {
+
+	play();
+
+}

@@ -1,0 +1,77 @@
+1.  국어, 영어 ,수학 점수를 입력받아서 평균을 구한 후 
+90이상이면 A,
+80이상이면 B,
+70이상이면 C,
+60이상이면 D,
+기타 F로 출력하시오.
+
+#include<stdio.h>
+
+int main() {
+
+	int a, b, c;
+	float e;
+
+	printf("국어 시험 성적을 입력하세요 :");
+	scanf_s("%d \n", &a);
+
+	printf("영어 시험 성적을 입력하세요 :");
+	scanf_s("%d \n", &b);
+	
+	printf("수학 시험 성적을 입력하세요 :");
+	scanf_s("%d \n", &c);
+
+	e = (a + b + c) / 3.0;
+
+	printf("학점은");
+	if (e >= 90) {
+		printf("A ");
+	}
+	else if (e >= 80) {
+		printf("B ");
+	}
+	else if (e >= 70) {
+		printf("C ");
+	}
+	else if (e >= 60) {
+		printf("D ");
+	}
+	else {
+		printf("F ");
+	}
+	printf("입니다.");
+}
+
+2. 1부터 100까지 홀수만 출력하기
+
+#include<stdio.h>
+
+int main() {
+
+	for (int i = 0; i < 100; i++) {
+
+		if ((i+1) % 2 == 1) {
+			printf("%d \n", i + 1);
+		}
+
+	}
+
+}
+
+
+3. 1부터 100까지 3의 배수만 출력하기
+#include<stdio.h>
+
+int main() {
+
+	for (int i = 0; i < 100; i++) {
+
+		if ((i + 1) % 3 == 0) {
+
+			printf("%d \n", (i + 1));
+
+		}
+
+	}
+
+}

@@ -1,0 +1,55 @@
+1. 국어, 영어 ,수학 점수를
+입력받아서 평균을 출력하시오.
+#include<stdio.h>
+
+int main() {
+
+	int a, b, c;
+
+	printf("국어 성적을 입력하세요.");
+	scanf_s("%d ", &a);
+
+	printf("영어 성적을 입력하세요.");
+	scanf_s("%d ", &b);
+	
+	printf("수학 성적을 입력하세요.");
+	scanf_s("%d ", &c);
+
+	printf("이번 시험 성적 평균은 %.1f 입니다.", (a + b + c) / 3.0);
+
+}
+
+2. 정수 a의 값을 짝수/홀수 판별하기
+#include<stdio.h>
+
+int main() {
+
+	int a = 3;
+
+	if (a % 2 == 0) {
+		printf("%d는 짝수입니다.", a);
+	}
+	else {
+		printf("%d는 홀수입니다.", a);
+	}
+
+}
+3. 정수 a의 값을 키보드로 입력받아서 
+짝수/홀수 판별하기
+#include<stdio.h>
+
+int main() {
+
+	int a;
+
+	printf("생각나는 정수 하나를 입력하세요.");
+	scanf_s("%d", &a);
+
+	if (a % 2 == 0) {
+		printf("%d는 짝수입니다.", a);
+	}
+	else {
+		printf("%d는 홀수입니다.", a);
+	}
+
+}

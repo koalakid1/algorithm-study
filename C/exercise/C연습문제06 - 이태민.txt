@@ -1,0 +1,118 @@
+1.로또번호생성기 만들기
+
+1~45까지의 숫자 6개를
+중복되지 않게 만들기
+
+난수,%,배열,for문 사용
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<string.h>
+
+int getNumber() {
+	
+	srand((unsigned)time(NULL));
+
+	return rand() % 45 + 1;
+
+}
+
+int* Newlotto(int* lotto) {
+
+	srand((unsigned)time(NULL));
+	int num, checker = 'Y';
+
+	for (int i = 0; i < 6;) {
+
+		int num = getNumber();
+
+		for (int j = 0; j < i; j++) {
+
+			if (lotto[j] == num) {
+
+				checker = 'N';
+				break;
+
+			}
+
+		}
+
+		if (checker == 'N'){
+			
+			checker = 'Y';
+			continue;
+
+		}
+			
+		else {
+
+			lotto[i++] = num;
+
+		}
+
+	}
+
+	return lotto;
+}
+
+int main() {
+	char checker;
+	while (1) {
+		int lotto[6];
+		Newlotto(lotto);
+		printf("\n추첨된 나의 로또번호. \n");
+		for (int i = 0; i < 6; i++) {
+
+			printf("%d ", lotto[i]);
+
+		}
+		puts("");
+
+		printf("로또 추가 구매 하시겠어요? (Y/N)");
+		checker = getche();
+		if (checker == 'N' || checker == 'n') break;
+	}
+
+}
+
+
+2.학번,학생명,학과명을 입력받아서 student.txt
+에 저장하기(csv형식)
+
+2019E00001,홍길동,컴퓨터공학과
+
+#include<stdio.h>
+
+void main()
+{
+	char stu_id[100], stu_name[100], stu_major[100];
+	FILE* wfp;
+
+	fopen_s(&wfp, "c:\\temp\\student.txt", "w");
+	
+	while (1) {
+
+		printf("학생의 학번을 입력 ==> ");
+		gets_s(stu_id, 100);
+		fputs(stu_id, wfp);
+		fprintf(wfp, ",");
+		printf("학생의 이름을 입력 ==> ");
+		gets_s(stu_name, 100);
+		fputs(stu_name, wfp);
+		fprintf(wfp, ",");
+		printf("학생의 전공을 입력 ==> ");
+		gets_s(stu_major, 100);
+		fputs(stu_major, wfp);
+		fprintf(wfp, "\n");
+		fclose(wfp);
+
+		char checker;
+		printf("학생 정보를 추가하시겠습니까?(Y/N)");
+		checker = getchar();
+		checker = getchar();
+		if (checker == 'N' || checker == 'n') break;
+		else fopen_s(&wfp, "c:\\temp\\student.txt", "a");
+
+	}
+}
