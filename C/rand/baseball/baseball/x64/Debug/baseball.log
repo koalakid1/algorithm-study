@@ -1,0 +1,10 @@
+﻿  baseball.c
+  baseball2.c
+C:\Users\USER\github\algorithm-study\C\rand\baseball\baseball\baseball2.c(17,16): warning C4013: 'getche'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\USER\github\algorithm-study\C\rand\baseball\baseball\baseball2.c(25,7): warning C4013: 'MAKE'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\USER\github\algorithm-study\C\rand\baseball\baseball\baseball2.c(82,15): warning C4013: 'SELECT'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  코드를 생성하고 있습니다...
+C:\Users\USER\github\algorithm-study\C\rand\baseball\baseball\baseball2.c(30): warning C4715: 'START': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\USER\github\algorithm-study\C\rand\baseball\baseball\baseball2.c(48): warning C4716: 'EXIT': 값을 반환해야 합니다.
+C:\Users\USER\github\algorithm-study\C\rand\baseball\baseball\baseball2.c(162): warning C4715: 'SELECT': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  baseball.vcxproj -> C:\Users\USER\github\algorithm-study\C\rand\baseball\x64\Debug\baseball.exe
