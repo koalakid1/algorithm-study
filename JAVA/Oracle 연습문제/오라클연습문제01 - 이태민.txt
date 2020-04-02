@@ -1,0 +1,23 @@
+1. mysample db를 생성하시오.
+--DB 생성
+create tablespace mysample datafile
+'C:\app\USER28\oradata\mysample.dbf' size 100m AUTOEXTEND on NEXT 5m;
+
+
+초기사이즈 200M, 자동증가, 증가사이즈 10M
+
+2. user1 계정을 생성하시오.
+
+기본DB는 mysample
+--계정 생성
+CREATE USER user1 IDENTIFIED by hong
+DEFAULT TABLESPACE mysample
+TEMPORARY TABLESPACE my;
+
+
+3. user1이 mysample DB를 사용할 수 있도록 권한을
+설정하시오. dba권한부여.
+
+grant dba to user1;
+4. sql developer에서 user1으로 접속할 수 있는 connection을
+생성하시오.

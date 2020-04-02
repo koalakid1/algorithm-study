@@ -1,0 +1,203 @@
+1. 막대그래프 완성하기
+=> 매출액 표시. 단위 : 억
+
+2. 꺾은선그래프 완성하기
+=> x, y축, 분기, 매출액 표시.
+
+1,2번 묶어서 제출
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class exercise extends JFrame {
+	
+	private MyPanel panel = new MyPanel();
+	
+	public exercise() {
+		setTitle("차트");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setContentPane(panel);
+		
+		setSize(1000,700);
+		setVisible(true);
+	}
+	
+	class MyPanel extends JPanel{
+		
+		int vGap = 50, weight = 20;
+		int startX = 150, startY = 100;
+		int Gap = 50;
+		ImageIcon icon = new ImageIcon("images/banana.png");
+		Image img = icon.getImage();
+		@Override
+		protected void paintComponent(Graphics g) {			
+			super.paintComponent(g);
+			g.setColor(Color.cyan);
+			g.drawString("1/4분기", startX - 10, startY - 5 );
+			g.fillRect(startX, startY, weight, 50);
+			g.drawString("50", startX + 5, startY + 60 );
+			g.setColor(Color.blue);
+			g.drawString("2/4분기", startX + 40 , startY - 5);
+			g.fillRect(startX + vGap, startY, weight, 70);
+			g.drawString("70", startX + 55 , startY + 80);
+			g.setColor(Color.green);
+			g.drawString("3/4분기", startX + 90, startY - 5);
+			g.fillRect(startX + vGap * 2 , startY,weight, 100);
+			g.drawString("100", startX + 100, startY + 110);
+			g.setColor(Color.gray);
+			g.drawString("4/4분기", startX + 140, startY - 5 );
+			g.fillRect(startX + vGap * 3, startY, weight, 140 );
+			g.drawString("140", startX + 150, startY + 150 );
+			
+			g.setColor(Color.black);
+			g.drawLine(startX - 50, startY, startX + vGap * 5, startY );
+			g.drawLine(startX - 50, startY, startX - 50, startY * 3);
+			g.drawString("(단위 : 억)", startX - 120, startY + 20 );
+			
+			g.drawLine(startX + Gap * 0, startY * 5 , startX +Gap * 1 , startY * 5 - 50 );
+			g.drawString("1/4분기", startX + 30 , startY * 5 + 20 );
+			g.drawString("50", startX + 45 , startY * 5  - 50 );
+			g.drawLine(startX + Gap * 1, startY * 5 - 50, startX + Gap * 2 , startY * 5 - 70 );
+			g.drawString("2/4분기", startX + 80 , startY * 5 + 20 );
+			g.drawString("70", startX + 95 , startY * 5  - 70 );
+			g.drawLine(startX + Gap * 2, startY * 5 - 70, startX + Gap * 3 , startY * 5 - 100);
+			g.drawString("3/4분기", startX + 130 , startY * 5 + 20 );
+			g.drawString("100", startX + 145 , startY * 5  - 100 );
+			g.drawLine(startX + Gap * 3, startY * 5 - 100, startX + Gap * 4 , startY *5 - 140);
+			g.drawString("4/4분기", startX + 180 , startY * 5 + 20 );
+			g.drawString("140", startX + 195 , startY * 5  - 140 );
+			g.drawLine(startX, startY*5, startX + Gap * 5, startY * 5);
+			g.drawLine(startX, startY*5, startX, startY * 5 - 200);
+			
+			g.drawString("(단위 : 억)", startX -60, startY *5 - 180 );
+			
+			
+			
+		}
+			
+	}
+	
+	public static void main(String[] args) {
+		new exercise();
+	}
+	
+}
+
+3. P.681 11번 완성하기
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class exercise4 extends JFrame{
+	
+	
+	Color[] color = {Color.RED, Color.BLUE, Color.MAGENTA, Color.ORANGE};
+	JTextField[] tf  = new JTextField[4];
+	String[] itemName = {"apple", "banana", "kiwi", "mango"};
+	drawchart drawchart = new drawchart();
+	
+	int[] data = {0,0,0,0};
+	int[] arcangle = {0,0,0,0};
+	public exercise4() {
+		setTitle("과일 개수 원차트");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Container c = getContentPane();
+		Panel panel = new Panel();
+		panel.setBackground(Color.gray);
+		for (int i = 0; i < 4; i++) {
+			
+			tf[i] = new JTextField("0",5);
+			panel.add(new JLabel(itemName[i]),BorderLayout.NORTH);
+			panel.add(tf[i],BorderLayout.NORTH);
+		}
+		JButton btn = new JButton("그래프 그리기");
+
+		panel.add(btn);
+
+		c.add(panel,BorderLayout.NORTH);
+		btn.addActionListener(new drawaction(tf));
+		c.add(new JLabel(itemName[0]));
+		c.add(drawchart,BorderLayout.CENTER);
+		
+		setSize(570,400);
+		setVisible(true);
+		repaint();
+		
+	}
+	
+	class drawaction implements ActionListener{
+		JTextField[] tf;
+		
+		drawaction(JTextField[] tf) {
+			this.tf = tf;// TODO Auto-generated constructor stub
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+
+			int sum = 0;
+			try {
+			for (int i = 0; i < 4; i++) {
+				data[i] = Integer.parseInt(tf[i].getText());
+				sum += data[i];
+			}
+			for (int i = 0; i < 4; i++) {
+				arcangle[i] = (int)Math.round((double)data[i]/(double)sum *360);
+			}
+			
+			drawchart.repaint();
+			}
+			catch (NumberFormatException n) {
+			}
+		}
+	
+		
+	}
+	
+	class drawchart extends JPanel{
+		
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			
+			int start = 0;
+			
+			for(int i=0;i<data.length;i++){
+				g.setColor(color[i]);
+				g.drawString(itemName[i]+""+Math.round(arcangle[i]*100/360)+"%", 50+i*100,20);
+			}
+			
+			for (int i = 0; i < 4; i++) {
+				g.setColor(color[i]);
+				g.fillArc(200,100,200,200,start,arcangle[i]);
+				
+				start += arcangle[i];
+				
+			}
+
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		new exercise4();
+	}
+}
