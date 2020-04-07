@@ -48,7 +48,7 @@ select gender,count(*) from member2 group by gender;
 
 select g.name, od.quantity from ordersDetail od join goods g
 on od.g_id = g.g_id
-where od.quantity = (select max(quantity) from ordersdetail);
+where od.quantity in (select max(quantity) from ordersdetail);
 
 
 select g.name, max(od.quantity) from ordersDetail od join goods g on od.g_id = g.g_id group by g.name;
