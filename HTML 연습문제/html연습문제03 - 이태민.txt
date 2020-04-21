@@ -1,0 +1,160 @@
+1. font awesome아이콘 중 달력모양 아이콘을 출력하시오.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+</body>
+</html>
+
+2. 다음 코드에서 p태그의 center클래스에만 글자색이 빨간색,
+글자가 가운데 정렬 되도록 css를 작성하시오.
+===>h1.center, p.center, .center의 차이 
+
+<h1 class="center">html5</h1>
+<p class="center">html5</p> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p.center{
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="center">html5</h1>
+    <p class="center">html5</p> 
+</body>
+</html>
+
+3. 다음 글씨가 가운데 정렬되도록 하시오.
+<h1>html5</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>html5</h1>
+
+</body>
+</html>
+
+4. 박스(div)가 가운데 정렬되도록 하시오.박스크기 300px.
+<div>html5</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:300px;
+            margin: auto;
+            text-align: center;
+            padding: 50px 0;
+            background: saddlebrown;
+        }
+    </style>
+</head>
+<body>
+    <div>html5</div>
+
+</body>
+</html>
+
+5. 링크를 이용해서 빨간색 '등록' 버튼을 만들어서 마우스오버시 배경색이 
+녹색이 되게 하시오.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a:link{
+            background-color: red;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        a:hover {
+        background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <a href="default.asp" target="_black">등록</a>
+</body>
+</html>
+
+6. 다음 두개의 박스를 그룹핑해서 부모가 움직이면 자식도 움직이게 하시오.
+
+<div id="box1">
+	box1
+
+	<div id="box2">
+		box2
+	</div>
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            position: relative;
+            top:100px;
+            left:20px;
+            width:300px;
+            height: 300px;
+            background: salmon;
+        }
+        #box2{
+            position: absolute;
+            bottom: 0;
+            width:100px;
+            height: 100px;
+            background: darkkhaki;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        box1
+    
+        <div id="box2">
+            box2
+        </div>
+    </div>
+
+</body>
+</html>
