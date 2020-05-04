@@ -1,0 +1,98 @@
+1. 국어,수학,영어점수를 입력받아서 
+배열에 저장하시오. prompt사용. new Array()사용
+
+var korean = prompt("국어 점수를 입력하세요", "0");
+var math = prompt("수학 점수를 입력하세요", "0");
+var english = prompt("영어 점수를 입력하세요", "0");
+
+var scores = new Array(korean,math,english);
+
+2. 1번에 저장한 값을 
+모두 출력하시오.(for문 사용)
+
+for (let index = 0; index < scores.length; index++) {
+    document.write(scores[index]+"<br>");
+}
+
+3. 1번에 저장한 점수의 평균을 구하시오.	
+
+var avg = (korean * 1 + math * 1 + english * 1)/3;
+
+4. 3번을 처리하는 함수를 만들어보시오.
+
+function name(scores) {
+    var sum = 0;
+    for (let index = 0; index < scores.length; index++) {
+        sum += scores[index]*1;
+    }
+    return sum/scores.length;
+}
+
+5. ID의 길이를 구하시오.
+var id="hongkildong";
+
+document.write(id.length);  => 11
+
+6. 주민등록번호에서 생년월일만 추출하시오.
+
+var id = "950925-1234567";
+document.write(id.substr(0,id.indexOf('-',0))); => 950925
+
+7. 전화번호 010-1234-5678에서 '-'기준으로 분리해서
+출력하시오.
+
+var phone = "010-1234-5678";
+split = phone.split("-");
+for (let index = 0; index < split.length; index++) {
+    document.write(split[index]+"<br>");
+}
+=>
+010
+1234
+5678
+
+8. 전화번호 010-1234-5678에서 '-'를 제거하시오.
+
+document.write("<h1> 문제 7번 </h1>");
+var phone = "010-1234-5678";
+split = phone.split("-");
+var newphone = "";
+for (let index = 0; index < split.length; index++) {
+    newphone += split[index];
+}
+document.write(newphone); => 01012345678
+
+
+9. id,pw,name을 prompt로 입력받아 ','붙여 변수에 
+저당했다가 다시 ','를 기준으로 분리해서 출력하시오.
+
+var id = prompt("id를 입력하세요");
+var pw = prompt("pw를 입력하세요");
+var name = prompt("name을 입력하세요");
+var data = id+","+pw+","+name;
+document.write(data.split(",")[0]+"<br>"+data.split(",")[1]+"<br>"+data.split(",")[2]);
+
+
+10. 사용자 브라우저가 IE이면 'IE를 지원하지 않습니다'를
+출력하시오. 구글링을 통해서 찾아서 작성해보세요.
+
+var agent = navigator.userAgent.toLowerCase();
+if ( (navigator.appName == 'Netscape' && agent.indexOf('trident') != -1) || (agent.indexOf("msie") != -1)) {
+    document.write("IE를 지원하지 않습니다.");// ie일 경우
+}
+
+11. 현재 시간을 구해서, 19시전에는 네이버로 이동하고, 
+19시 이후에는 구글로 이동하게 하시오.
+
+var today = new Date();
+var hourToday = today.getHours();
+
+if (hourToday<19){
+    location.href = "http://www.naver.com";
+}else{
+    location.href = "http://www.google.co.kr";
+}
+
+12. 검색어를 입력하고 버튼을 누르면,
+네이버북 사이트(https://book.naver.com/)에서 검색결과 나오게 하기.
+
