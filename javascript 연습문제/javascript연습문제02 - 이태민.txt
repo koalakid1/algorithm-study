@@ -1,0 +1,42 @@
+1. 학생 객체를 생성하고 평균학점을 구하시오.
+학생{
+	이름,국어,영어,수학,학점()
+}
+홍길동:A학점
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Student(name,korean,english,math) {
+            this.name = name;
+            this.korean = korean;
+            this.english = english;
+            this.math = math;
+
+            this.score = function(){
+                var avg = (this.korean + this.english + this.math) / 3;
+                if (avg >= 90) {
+                    document.write(this.name," : A학점");
+                }else if (avg >= 80) {
+                    document.write(this.name," : B학점");
+                }else if (avg >= 70) {
+                    document.write(this.name," : C학점");
+                }else if (avg >= 60) {
+                    document.write(this.name," : D학점");
+                }else{
+                    document.write(this.name," : F학점")
+                }
+            }
+        }
+        hkd = new Student("홍길동",99,90,90);
+        hkd.score();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,156 @@
+1.버튼을 누르면 웹페이지 배경색이 녹색이 되도록
+변경하시오.
+
+2.다음 테이블태그에서 짝수행 배경색이 orange색이
+되도록 하시오.
+<table border="1" width="50%">
+	<tr><td>이름</td><td>주소</td></tr>
+	<tr><td>홍길동</td><td>서울시</td></tr>
+	<tr><td>이순신</td><td>제주시</td></tr>
+	<tr><td>왕건</td><td>경기도</td></tr>
+</table>
+
+3.버튼을 누르면 다음 이미지에 그림자가 생기게
+하시오.
+
+<img src="img/pic01.jpg">
+
+4.버튼을 누르면 2번 테이블에서 첫번째 행의 배경색을 검은색,
+글자를 흰색으로 설정하시오.
+
+5.버튼을 누르면 3번이미지가 오른쪽으로 이동하도록
+하시오.
+
+6.https://www.w3schools.com/howto/howto_js_accordion.asp
+위주소의 accordion기능을 jQuery로 구현하시오.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //문제1번
+            $("#btn1").click(function () {
+                $("body").css("background", "green");
+            });
+            //문제2번
+            $("#q2 tr:even").css("background", "orange");
+            //문제3번
+            $("#btn3").click(function () {
+                $("#q3").css("filter", "drop-shadow(5px 5px 5px #000)");
+            });
+            //문제4번
+            $("#btn4").click(function () {
+                $("#q2 tr:first-child").css("background", "#000");
+                $("#q2 tr:first-child").css("color", "#fff");
+            });
+            //문제5번
+            $("#btn5").click(function () {
+                $("#q3").addClass("on");
+            })
+            //문제6번
+            $(".accordion").click(function(){
+                var panel = $(this).next(".panel");
+                panel.toggleClass("on");
+            });
+        })
+
+    </script>
+    <style>
+        #q3 {
+            width: auto;
+            height: auto;
+            position: relative;
+        }
+
+        #q3.on {
+            left: 100px;
+        }
+
+        /* 문제 6번 */
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #ccc;
+        }
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+        .panel.on{
+            display:block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>문제 1번</h1>
+    <button type="button" id="btn1">문제1번</button>
+    <h1>문제 2,4번</h1>
+    <table id="q2" border="1" width="50%">
+        <tr>
+            <td>이름</td>
+            <td>주소</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>서울시</td>
+        </tr>
+        <tr>
+            <td>이순신</td>
+            <td>제주시</td>
+        </tr>
+        <tr>
+            <td>왕건</td>
+            <td>경기도</td>
+        </tr>
+    </table>
+    <button id="btn4" type="button">문제4번</button>
+    <h1>문제 3,5번</h1>
+    <img src="img/pic01.jpg" id="q3"> <br>
+    <button id="btn3" type="button">문제3번</button>
+    <button id="btn5" type="button">문제5번</button>
+
+    <h1>문제 6번</h1>
+    <button class="accordion">Section 1</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.</p>
+    </div>
+
+    <button class="accordion">Section 2</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.</p>
+    </div>
+
+    <button class="accordion">Section 3</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.</p>
+    </div>
+</body>
+
+</html>
