@@ -1,0 +1,353 @@
+1. join2.html에서 textarea에 150자 이상입력되면
+더이상 입력되지 않게하기.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <script src="js/jquery.js"></script>
+    <script>
+        function check(){
+            if(document.form1.id.value == ""){
+                alert("id를 입력하세요");
+                return;
+            }
+            if(document.form1.name.value.length==0){
+                alert("이름을 입력하세요");
+                return;
+            }
+
+            if(document.form1.pw.value.length==0){
+                alert("비밀번호를 입력하세요");
+                return;
+            }
+
+            var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+            if (!emailRule.test(document.form1.email.value)) {
+                alert("email형식이 일치하지 않습니다.")//경고
+                return;
+            }
+            document.form1.submit();
+
+
+        }
+
+        $(document).ready(function(){
+            $("#intro").on("keyup",function(){
+                if ($(this).val().length > 150){
+                    $(this).val($(this).val().substring(0,150));
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <h3>회원가입</h3>
+    <form name="form1" action="join.jsp" method="POST">
+        ID <input type="text" name="id"><br>
+        Name <input type="text" name="name"><br>
+        PW <input type="password" name="pw"><br>
+        Email <input type="text" name="email"><br>
+        Email수신 <input type="radio" value="예" name="emailYN">예
+                    <input type="radio" value="아니오" name="emailYN">아니오 <br>
+        취미 <INPUT type="checkbox" value="운동" name="hobby1">운동</INPUT>
+        <INPUT type="checkbox" value="독서" name="hobby2">독서</INPUT>
+        <INPUT type="checkbox" value="등산" name="hobby3">등산</INPUT>
+        <INPUT type="checkbox" value="낚시" name="hobby4">낚시</INPUT><br>
+        직업 <select name="jop" id="">
+            <option value="학생">학생</option>
+            <option value="직장인">직장인</option>
+            <option value="군인">군인</option>
+            <option value="기타">기타</option>
+        </select> <br>
+        자기소개 <br>
+        <textarea name="introduce" id="intro" cols="50" rows="10"></textarea> <br>
+        사진 <input type="file" name="picture"> <br>
+        <input type="submit" name="등록" value="등록" onclick="return check()">
+    </form>
+</body>
+</html>
+
+
+2. https://www.jaguar.com/build-yours/index.html처럼 
+일정양을 scroll할 때 메뉴가 상단에 고정되도록 구현하시오.
+
+
+
+1) menuTop1을 안보이게.
+2) menuTop2은 상단에 고정. position:fixed 사용
+
+<div id="menuTop1">facebook twitter google++</div>
+<div id="menuTop2">product | contact | map </div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            var scrolltop = $("#menuTop2").offset();
+            $(window).scroll(function(){
+                if($(document).scrollTop() > scrolltop.top){
+                    $("#menuTop2").addClass("fixed");
+                }else{
+                    $("#menuTop2").removeClass("fixed");
+                }
+            })
+        })
+    </script>
+    <style>
+        body{
+            height: 10000px;
+        }
+
+        .fixed{
+            position: fixed;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="menuTop1">facebook twitter google++</div>
+    <div id="menuTop2">product | contact | map </div>
+</body>
+</html>
+
+3. 두개의 박스가 스크롤시 하나는 왼쪽, 다른 하나는 오른쪽에서
+나타나게 하시오. 카카오 오븐 참고. animate.css 사용.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/animate.css">
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                $("#box1").addClass("fadeInLeft animated")
+                $("#box2").addClass("fadeInRight animated")
+            })
+        })
+    </script>
+    <style>
+        body{
+            height: 10000px;
+        }
+        #box1{
+            margin-top: 200px;
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        #box2{
+            width: 300px;
+            height: 300px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+</body>
+</html>
+
+
+4. slider에서 < , > 기능 구현하기
+
+
+
+5. slider에서 active기능 구현하기
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>slider</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        .animation_canvas {
+
+            overflow: hidden;
+            position: relative;
+            width: 600px;
+            height: 400px;
+        }
+
+
+
+        /* Slider Panel */
+
+        .slider_panel {
+            width: 3000px;
+            position: relative;
+        }
+
+        .slider_image {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+
+
+
+        /* Control Panel */
+
+        .control_panel{
+
+            position: absolute;
+
+            bottom: 10px;
+
+            left: 270px;
+
+            overflow: hidden;
+
+            color: white;
+
+        }
+
+
+        .control a{
+            position: absolute;
+            z-index: 9999;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            line-height: 350px;
+        }
+
+        .control_next{
+            right: 0;
+        }
+
+
+
+        .dot {
+
+            font-size: 30px;
+
+            cursor: pointer;
+
+        }
+
+        .active{
+            color: black;
+        }
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+
+            // 슬라이더를 움직여주는 함수
+            var index = 0;
+            var lengthimg = $(".slider_image").length;
+
+            function moveSlider(index) {
+
+                var willMoveLeft = -(index * 600);
+
+                $('.slider_panel').animate({ left: willMoveLeft }, 'slow');
+
+            };
+
+            $(".dot").click(function () {
+                $(".dot").removeClass("active");
+                $(this).addClass("active");
+                moveSlider($(this).index());
+            });
+
+            $(".control_prev").click(function(){
+                index--;
+                if(index<0){
+                    index+=lengthimg;
+                }
+
+                moveSlider(index);
+                $(".dot").removeClass("active");
+                $(".dot").eq(index).addClass("active");
+            });
+
+            $(".control_next").click(function(){
+                index++;
+                if(index==lengthimg){
+                    index-=$(".slider_image").length;
+                }
+
+                moveSlider(index);
+                $(".dot").removeClass("active");
+                $(".dot").eq(index).addClass("active");
+            });
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="animation_canvas">
+
+        <div class="control">
+            <a href="#" class="control_next"><i class="fa fa-chevron-right"></i> </a>
+            <a href="#" class="control_prev"><i class="fa fa-chevron-left"></i> </a>
+        </div>
+
+        <div class="slider_panel">
+
+            <img src="img/pic01.png" class="slider_image" />
+
+            <img src="img/pic02.png" class="slider_image" />
+
+            <img src="img/pic03.png" class="slider_image" />
+
+            <img src="img/pic04.jpg" class="slider_image" />
+
+            <img src="img/pic05.jpg" class="slider_image" />
+
+        </div>
+
+
+
+        <div class="control_panel" style="text-align:center">
+
+            <span class="dot active">*</span>
+
+            <span class="dot">*</span>
+
+            <span class="dot">*</span>
+
+            <span class="dot">*</span>
+
+            <span class="dot">*</span>
+
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
+
