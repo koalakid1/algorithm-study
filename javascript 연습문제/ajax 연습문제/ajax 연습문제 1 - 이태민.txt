@@ -1,0 +1,11 @@
+1. 우편번호검색기능을 ajax로 구현해보시오
+
+1) post 테이블 생성
+address, zipcode
+
+create table post(
+   address varchar(100) not null,
+   zipcode char(5)
+);
+
+2) 영등포를 입력하면 영등포가 포함된 주소 검색
