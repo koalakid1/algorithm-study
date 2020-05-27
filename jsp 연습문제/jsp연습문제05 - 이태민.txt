@@ -1,0 +1,13 @@
+1. 게시판 삭제시 '삭제하시겠습니까?' 처리하기
+
+checkSuccess.js파일에 이 코드를 추가하면 됨.
+if(confirm("삭제하시겠습니까?")){
+    			//윈도우 이름이 delete인 경우
+        		alert('삭제되었습니다.')
+        		window.opener.parent.location.href=
+        			"BoardServlet?command=board_delete&num=${param.num}";
+        			
+    		}
+
+2. 게시판의 모든 버튼을 bootstrap 버튼으로 변경하기
+
