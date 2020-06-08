@@ -1,0 +1,43 @@
+1. 채팅프로그램에서 내가 쓴 글은 오른쪽, 
+   다른 사람이 쓴 글은 왼쪽에 나타나게 하기
+
+chatting.js
+    socket.emit('my message', data);
+    socket.broadcast.emit('other message', data);
+
+HTMLPage.html
+socket.on('my message', function (data) {
+        // 추가할 문자열을 만듭니다.
+        var output = '';
+        output+= "<div class='msg me'>";
+        output += '<span>';
+        output += '    <h3>' + data.name + '</h3>';
+        output += '    <p>' + data.message + '</p>';
+        output += '    <p>' + data.date + '</p>';
+        output += '</span>';
+        output += '</div>';
+
+
+        // 문서 객체를 추가합니다.
+        $(output).appendTo('#content');
+
+        // $('#content').listview('refresh');
+      });
+
+      socket.on('other message', function (data) {
+        // 추가할 문자열을 만듭니다.
+        var output = '';
+        output+= "<div class='msg other'>";
+        output += '<span>';
+        output += '    <h3>' + data.name + '</h3>';
+        output += '    <p>' + data.message + '</p>';
+        output += '    <p>' + data.date + '</p>';
+        output += '</span>';
+        output += '</div>';
+
+
+        // 문서 객체를 추가합니다.
+        $(output).appendTo('#content');
+
+        // $('#content').listview('refresh');
+      });
